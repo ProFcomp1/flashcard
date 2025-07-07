@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Flashcard CSS – Seletor</title>
+
+<!
+-===== CSS ===== -->
+<style>
+/* layout da página */
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#f2f2f2;
+font-family:Arial, sans-serif;
+}
+/* wrapper da carta */
+.card{
+width:300px;
+height:200px;
+perspective:1000px; /* profundidade 3D */
+cursor:pointer;
+}
+
+/* “miolo” que realmente gira */
+.inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform .6s;
+transform-style:preserve-3d;
+}
+/* gira quando o .card recebe a classe flip (ver JS) */
+.card.flip .inner{
+transform:rotateY(180deg);
+}
+
+/* faces da carta */
+.face{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.15);
+padding:20px;
+box-sizing:border-box;
+}
+.front{ background:#ffffff; }
+.back{
+background:#e3f2fd;
+transform:rotateY(180deg);
+}
+
+/* estética do código-exemplo */
+code{
+display:block;
+margin-top:10px;
+background:#ededed;
+padding:8px;
+border-radius:6px;
+font-size:0.9em;
+}
+</style>
+</head>
+<body>
+
+<!
+-===== Flashcard ===== -->
+<div class="card" onclick="this.classList.toggle('flip')">
+<div class="inner">
+<!
+-Frente (conceito) -->
+<div class="face front">
+<h3>Seletor CSS</h3>
+<p>Define quais elementos HTML receberão estilos.</p>
+</div>
+<!
+-Verso (exemplo) -->
+<div class="face back">
+<h4>Exemplo</h4>
+<code>p { color: blue; }</code>
+<p>Aplica cor azul a todos os parágrafos (&lt;p&gt;).</p>
+</div>
+</div>
+</div>
+<!
+-===== JS ===== -->
+<script>
+/* Nada além do clique necessário:
+ao clicar, alternamos/remo­vemos a classe .flip do elemento .card
+(o próprio atributo onclick no HTML já faz isso). */
+</script>
+</body>
+</html>
